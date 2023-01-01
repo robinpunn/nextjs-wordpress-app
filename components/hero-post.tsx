@@ -1,6 +1,6 @@
 import Avatar from './avatar'
 import Date from './date'
-import CoverImage from './cover-image'
+// import CoverImage from './cover-image'
 import Link from 'next/link'
 
 export default function HeroPost({
@@ -12,32 +12,22 @@ export default function HeroPost({
   slug,
 }) {
   return (
-    <section>
-      <div className="mb-8 md:mb-16">
-        {coverImage && (
-          <CoverImage title={title} coverImage={coverImage} slug={slug} />
-        )}
-      </div>
-      <div className="md:grid md:grid-cols-2 md:gap-x-16 lg:gap-x-8 mb-20 md:mb-28">
-        <div>
-          <h3 className="mb-4 text-4xl lg:text-6xl leading-tight">
+    <section className='border-solid border-2 border-indigo-500/50 shadow-lg shadow-indigo-500/50 flex-col justify-between rounded-2xl w-3/4 lg:w-1/2 mx-auto'>
+      <div className="text-center">
+          <h3 className="my-10 mx-auto text-2xl lg:text-6xl leading-tight px-5">
             <Link
               href={`/posts/${slug}`}
               className="hover:underline"
               dangerouslySetInnerHTML={{ __html: title }}
             ></Link>
           </h3>
-          <div className="mb-4 md:mb-0 text-lg">
-            <Date dateString={date} />
-          </div>
-        </div>
-        <div>
           <div
-            className="text-lg leading-relaxed mb-4"
+            className="text-md lg:text-lg leading-relaxed my-10 px-5"
             dangerouslySetInnerHTML={{ __html: excerpt }}
           />
-          <Avatar author={author} />
-        </div>
+          <div className="my-10 text-md lg:text-lg px-5">
+            <Date dateString={date} />
+          </div>
       </div>
     </section>
   )
