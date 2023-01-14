@@ -27,6 +27,23 @@ async function fetchAPI(query = '', { variables }: Record<string, any> = {}) {
   return json.data
 }
 
+export async function getAllCategories() {
+  const data = await fetchAPI(`
+    {
+      categories {
+        edges {
+          node {
+            name
+            slug
+          }
+        }
+      }
+    }
+  `)
+  return data?.categories
+}
+
+
 export async function getPreviewPost(id, idType = 'DATABASE_ID') {
   const data = await fetchAPI(
     `

@@ -12,7 +12,7 @@ export default function HeroPost({
   slug,
 }) {
   return (
-    <section className='border-solid border-2 border-indigo-500/50 shadow-lg shadow-indigo-500/50 flex-col justify-between rounded-2xl w-3/4 lg:w-1/2 mx-auto'>
+    <section className='border-solid border-2 border-indigo-500/50 shadow-lg shadow-indigo-500/50 flex-col justify-between rounded-2xl w-3/4 lg:w-1/2 mx-auto group hover:bg-gradient-to-r from-violet-500 to-fuchsia-500 hover:text-slate-900'>
       <div className="text-center">
           <h3 className="my-10 mx-auto text-2xl lg:text-6xl leading-tight px-5">
             <Link

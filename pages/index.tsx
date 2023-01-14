@@ -5,20 +5,27 @@ import MoreStories from '../components/more-stories'
 import HeroPost from '../components/hero-post'
 import Intro from '../components/intro'
 import Layout from '../components/layout'
-import { getAllPostsForHome } from '../lib/api'
+import { getAllPostsForHome, getAllCategories } from '../lib/api'
 import { CMS_NAME } from '../lib/constants'
+import { useState } from 'react'
+import Categories from '../components/categories'
+import SectionSeparator from '../components/section-separator'
 
-export default function Index({ allPosts: { edges }, preview }) {
+export default function Index({ allPosts: { edges }, preview, categories }) {
   const heroPost = edges[0]?.node
   const morePosts = edges.slice(1)
+  const [selectedCategory, setSelectedCategory] = useState(null);
 
   return (
     <Layout preview={preview}>
       <Head>
-        <title>Next.js Blog Example with {CMS_NAME}</title>
+        <title>Robin || Full-Stack Developer || Headless {CMS_NAME} Powered by Next.js</title>
       </Head>
       <Container>
         <Intro />
+        <SectionSeparator />
+        <Categories categories={categories} />
+        <SectionSeparator />
         {heroPost && (
           <HeroPost
             title={heroPost.title}
@@ -37,9 +44,10 @@ export default function Index({ allPosts: { edges }, preview }) {
 
 export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
   const allPosts = await getAllPostsForHome(preview)
+  const categories = await getAllCategories()
 
   return {
-    props: { allPosts, preview },
+    props: { allPosts, preview, categories:categories },
     revalidate: 10,
   }
 }

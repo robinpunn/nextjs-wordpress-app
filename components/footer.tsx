@@ -7,7 +7,7 @@ export default function Footer() {
       <Container>
         <div className="py-10 flex flex-col items-center">
           <p className="py-5 text-l font-bold tracking-tighter leading-tight text-center m-auto lg:w-1/2">
-            blog posts by robin punnoose
+            blog posts by <a href='https://www.robinpunn.com/' target='_blank' rel="noreferrer" >robin punnoose</a>
           </p>
           <p className="text-l font-bold tracking-tighter leading-tight text-center m-auto lg:w-1/2">
             created with
