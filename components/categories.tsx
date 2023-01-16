@@ -1,25 +1,24 @@
-import { getAllCategories } from '../lib/api'
-import { GetStaticProps } from 'next'
-import { useState } from 'react'
+import Link from "next/link"
 
-export default function Categories({ categories,filterPosts }) {
+export default function Categories({categories, filterPosts }) {
 
-  const [selectedCategory, setSelectedCategory] = useState(null)
   const filteredCategories = categories.edges.filter(category => category.node.name !== 'Uncategorized')
 
   return (
-    <span className="flex items-center justify-center">
+    <span className="flex items-center justify-evenly flex-wrap">
       {categories.edges.length > 0 ? (
         filteredCategories.map((category, index) => (
-          <span
+          <Link
             key={index}
-            className="mx-6 text-center"
-            onClick={() =>
-              setSelectedCategory(category.node.name)
+            className="mx-6 text-center font-semibold hover:cursor-pointer hover:text-white"
+            href="/#more"
+            onClick={() => {
+                filterPosts(category.node.name)
+              }
             }
           >
             {category.node.name}
-          </span>
+          </Link>
         ))
       ) : (
         <span className="ml-1">{categories.edges.node.name}</span>
@@ -29,14 +28,3 @@ export default function Categories({ categories,filterPosts }) {
 }
 
 
-export const getStaticProps: GetStaticProps = async () => {
-
-  const categories = await getAllCategories()
-
-  return {
-    props: {
-      categories: categories,
-    },
-    revalidate: 10,
-  }
-}

@@ -5,4 +5,4 @@ This blog showcases Next.js's [Incremental Static Regeneration](https://nextjs.o
 
 ### The respository can be cloned [here](https://github.com/vercel/next.js/tree/canary/examples/cms-wordpress)
 
-This project incorporates [GraphQL](https://graphql.org/) to query data from WordPress and [TailwindCSS](https://tailwindcss.com/docs/installation) for styling.
+This project incorporates [GraphQL](https://graphql.org/) to query data from [WordPress](https://wordpress.org). [TailwindCSS](https://tailwindcss.com/docs/installation) is used for styling.

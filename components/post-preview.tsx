@@ -5,14 +5,13 @@ import Link from 'next/link'
 
 export default function PostPreview({
   title,
-  coverImage,
   date,
   excerpt,
   author,
   slug,
 }) {
   return (
-    <div className='border-solid border-2 border-indigo-500/50 shadow-lg shadow-indigo-500/50 flex-col justify-between rounded-2xl w-3/4 lg:w-1/2 mx-auto text-center group hover:bg-gradient-to-r from-violet-500 to-fuchsia-500 hover:text-slate-900'>
+    <div className='border-solid border-2 border-indigo-500/50 shadow-lg shadow-indigo-500/50 flex-col justify-between rounded-2xl w-3/4 lg:w-1/2 mx-auto text-center group hover:bg-gradient-to-r from-violet-500 to-fuchsia-500 hover:text-slate-900 ease-in duration-300'>
       {/*<div className="mb-5">
         coverImage && (
           <CoverImage title={title} coverImage={coverImage} slug={slug} />

@@ -80,7 +80,7 @@ export async function getAllPostsForHome(preview) {
   const data = await fetchAPI(
     `
     query AllPosts {
-      posts(first: 20, where: { orderby: { field: DATE, order: DESC } }) {
+      posts(first: 100, where: { orderby: { field: DATE, order: DESC } }) {
         edges {
           node {
             title
@@ -99,6 +99,13 @@ export async function getAllPostsForHome(preview) {
                 lastName
                 avatar {
                   url
+                }
+              }
+            }
+            categories {
+              edges {
+                node {
+                  name
                 }
               }
             }

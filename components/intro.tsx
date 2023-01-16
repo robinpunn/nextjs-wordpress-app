@@ -1,4 +1,5 @@
 import { CMS_NAME, CMS_URL } from '../lib/constants'
+import Link from 'next/link'
 
 export default function Intro() {
   return (
@@ -7,7 +8,9 @@ export default function Intro() {
         Understanding The Web
       </h3>
       <h5 className="text-lg md:text-xl font-bold tracking-tighter leading-tight md:pr-8">
-        the journey of a self taught web developer
+        <Link href="https://www.robinpunn.com/" target="_blank" rel='noreferrer' className="hover:underline">
+          the journey of a self taught web developer
+        </Link>
       </h5>
     </section>
   )

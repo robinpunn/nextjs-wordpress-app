@@ -53,9 +53,7 @@ export default function Post({ post, posts, preview }) {
                 {post.tags.edges.length > 0 && <Tags tags={post.tags} />}
               </footer>
             </article>
-
             <SectionSeparator />
-            {morePosts.length > 0 && <MoreStories posts={morePosts} />}
           </>
         )}
       </Container>
