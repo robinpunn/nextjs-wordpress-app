@@ -1,6 +1,6 @@
 import Link from "next/link"
 
-export default function Categories({categories, filterPosts }) {
+export default function Categories({categories, filterPosts, handleCategorySelect }) {
 
   const filteredCategories = categories.edges.filter(category => category.node.name !== 'Uncategorized')
 
@@ -14,6 +14,7 @@ export default function Categories({categories, filterPosts }) {
             href="/#more"
             onClick={() => {
                 filterPosts(category.node.name)
+                handleCategorySelect(category.node.name)
               }
             }
           >
