@@ -4,6 +4,7 @@ import Container from '../components/container'
 import MoreStories from '../components/more-stories'
 import HeroPost from '../components/hero-post'
 import Intro from '../components/intro'
+import ScrollTop from '../components/scrolltop'
 import Layout from '../components/layout'
 import { getAllPostsForHome, getAllCategories } from '../lib/api'
 import { useState} from 'react'
@@ -50,6 +51,7 @@ export default function Index({ allPosts: { edges }, preview, categories }) {
         )}
         {filteredPosts.length !== 0 ? <MoreStories posts={filteredPosts} currentCategory={currentCategory}/> : <MoreStories posts={edges.slice(1)} currentCategory={currentCategory}/>}
       </Container>
+      <ScrollTop />
     </Layout>
   )
 }
