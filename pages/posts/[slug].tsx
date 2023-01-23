@@ -15,7 +15,7 @@ import { getAllPostsWithSlug, getPostAndMorePosts, getAllCategories } from '../.
 import { CMS_NAME } from '../../lib/constants'
 import Categories from '../../components/categories'
 
-export default function Post({ post, posts, preview }) {
+export default function Post({ post, posts, preview, filterMorePosts }) {
   const router = useRouter()
   const morePosts = posts?.edges
 
@@ -24,7 +24,7 @@ export default function Post({ post, posts, preview }) {
   }
 
   return (
-    <Layout preview={preview}>
+    <Layout preview={preview} filterMorePosts={filterMorePosts}>
       <Container>
         <Header />
         {router.isFallback ? (
