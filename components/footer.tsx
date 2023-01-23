@@ -2,7 +2,7 @@ import Container from './container'
 import { EXAMPLE_PATH } from '../lib/constants'
 import Link from 'next/link'
 
-export default function Footer() {
+export default function Footer({filterMorePosts}) {
   return (
     <footer className="bg-gray-900">
       <Container>
@@ -11,6 +11,7 @@ export default function Footer() {
             <Link
               href='/'
               className='mx-3 font-bold hover:underline hover:text-white ease-in duration-300'
+              onClick={() => {filterMorePosts()}}
             >
             blog posts
             </Link>

@@ -7,7 +7,7 @@ import Intro from '../components/intro'
 import ScrollTop from '../components/scrolltop'
 import Layout from '../components/layout'
 import { getAllPostsForHome, getAllCategories } from '../lib/api'
-import { useState} from 'react'
+import { useState, useEffect} from 'react'
 import Categories from '../components/categories'
 import SectionSeparator from '../components/section-separator'
 
@@ -15,12 +15,20 @@ export default function Index({ allPosts: { edges }, preview, categories }) {
   const heroPost = edges[0]?.node
   const [filteredPosts, setFilteredPosts] = useState([])
   const [currentCategory, setCurrentCategory] = useState('')
+  const [initialPosts, setInitialPosts] = useState(edges)
 
   const handleCategorySelect = (category) => {
     setCurrentCategory(category)
   }
 
-  // console.log('initial:',filteredPosts)
+  useEffect(() => {
+    setInitialPosts(edges);
+  }, [edges]);
+
+  const filterMorePosts = () => {
+      setFilteredPosts(initialPosts);
+      setCurrentCategory("More Posts");
+  }
 
   const filterPosts = (category) => {
     if(edges.length>0){
@@ -30,7 +38,7 @@ export default function Index({ allPosts: { edges }, preview, categories }) {
   }
 
   return (
-    <Layout preview={preview}>
+    <Layout preview={preview} filterMorePosts={filterMorePosts}>
       <Head>
         <title>Headless WordPress || Powered by Next.js</title>
       </Head>
@@ -51,7 +59,7 @@ export default function Index({ allPosts: { edges }, preview, categories }) {
         )}
         {filteredPosts.length !== 0 ? <MoreStories posts={filteredPosts} currentCategory={currentCategory}/> : <MoreStories posts={edges.slice(1)} currentCategory={currentCategory}/>}
       </Container>
-      <ScrollTop />
+      <ScrollTop filterMorePosts={filterMorePosts} />
     </Layout>
   )
 }

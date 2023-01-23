@@ -5,7 +5,7 @@ export default function MoreStories({ posts, currentCategory }) {
   return (
     <section>
      <h2 id="more" className="my-8 mt-24 text-6xl md:text-7xl font-bold tracking-tighter leading-tight text-center">
-      {currentCategory ? `${currentCategory}` : 'More Posts'}
+     {currentCategory === "More Posts" || currentCategory === "" ? "More Posts" : currentCategory}
       </h2>
       <div className="grid grid-cols-1 md:gap-x-16 lg:gap-x-32 gap-y-20 md:gap-y-32 mb-32">
       {posts.map(({ node }) => {
