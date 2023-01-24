@@ -21,14 +21,15 @@ export default function Index({ allPosts: { edges }, preview, categories }) {
     setCurrentCategory(category)
   }
 
-  useEffect(() => {
-    setInitialPosts(edges);
-  }, [edges]);
-
   const filterMorePosts = () => {
-      setFilteredPosts(initialPosts);
+      setFilteredPosts(initialPosts.slice(1));
       setCurrentCategory("More Posts");
   }
+
+  useEffect(() => {
+    setInitialPosts(edges);
+    filterMorePosts();
+  }, [edges]);
 
   const filterPosts = (category) => {
     if(edges.length>0){
